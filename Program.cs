@@ -9,6 +9,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Xml.Linq;
@@ -19,6 +21,10 @@ namespace TATParser
     {
         static void Main(string[] args)
         {
+
+            Console.WriteLine(GetText());
+            Console.ReadKey();
+
             Fb2Document fb2Document = Fb2Document.CreateDocument();
             var options = new ChromeOptions
             {
@@ -93,6 +99,24 @@ namespace TATParser
             Environment.Exit(0);
         }
 
+
+        public static string GetText(int bookId = 119568, int Id = 962097)
+        {
+            var client = new HttpClient();
+
+            var response = client.GetAsync($"https://author.today/reader/{bookId}/chapter?id={Id}").Result;
+            var secret = response.Headers.GetValues("Reader-Secret").FirstOrDefault();
+            var key = string.Join("", secret.Reverse()) + "@_@";
+
+            var text = JsonConvert.DeserializeObject<Response>(response.Content.ReadAsStringAsync().Result).Data.Text;
+
+            var endText = new StringBuilder();
+            for (var i = 0; i < text.Length; i++)
+                endText.Append((char)(text[i] ^ key[i % key.Length]));
+
+            return endText.ToString();
+        }
+
         static void SaveCookies(Cookie[] cookies)
         {
             var filename = "cookies";
@@ -129,6 +153,16 @@ namespace TATParser
         }
 
         #endregion
+    }
+
+    public class Response
+    {
+        public ResponseData Data;
+    }
+
+    public class ResponseData
+    {
+        public string Text;
     }
 
     #region Расширения
