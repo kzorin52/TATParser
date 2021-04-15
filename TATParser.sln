@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31004.235
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TATParser", "TATParser.csproj", "{EEE91069-1782-45E4-B3BF-B8BC5D87EAF0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EEE91069-1782-45E4-B3BF-B8BC5D87EAF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEE91069-1782-45E4-B3BF-B8BC5D87EAF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEE91069-1782-45E4-B3BF-B8BC5D87EAF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEE91069-1782-45E4-B3BF-B8BC5D87EAF0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4C76D454-B1B8-4466-904F-22854EB3D1A6}
+	EndGlobalSection
+EndGlobal
